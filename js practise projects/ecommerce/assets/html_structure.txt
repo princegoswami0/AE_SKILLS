@@ -1,0 +1,20 @@
+// modal structure 
+
+body
+├── overlay
+└── modal
+    ├── close-layer
+    └── content
+        ├── close-button
+        ├── image-box
+        └── newsletter
+            └── form
+                ├── header
+                │   ├── h3
+                │   └── p
+                ├── email-input
+                └── submit-button
+
+//Modal > Content > Newsletter 
+
+--> 
