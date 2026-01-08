@@ -1,0 +1,57 @@
+*{
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box; 
+}
+
+body{
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.qr-container{
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  width: 500px;
+  background-color: white;
+  text-align: center;
+}
+
+#qr-heading{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+#qr-input{
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+#qr-button{
+  font-size: 1.2rem;
+  padding: 10px;
+  border: none;
+  background-color: red;
+  color: white;
+  width: 90%;
+  /* display: block;
+  margin: 0 auto; */  
+  /* for centering the button we can also give the margin button simple is to tell the father that make your children center.  */
+  margin-bottom: 10px;
+}
+
+#qr-img{
+  width: 50%;
+}
+
+
+
+

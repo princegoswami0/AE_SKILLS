@@ -15,6 +15,80 @@ body
                 ├── email-input
                 └── submit-button
 
-//Modal > Content > Newsletter 
 
---> 
+
+-->CSS comments
+
+.overlay {
+  position: fixed;              // element ko viewport ke respect me fix karta hai, scroll par move nahi hota
+  top: 0;                       // viewport ke top se start
+  left: 0;                      // viewport ke left se start
+  width: 100%;                  // poori screen ki width cover karta hai
+  height: 100vh;                // poori viewport height cover karta hai
+  background: hsla(0, 0, 0, 0.5); // semi-transparent black background for dim effect
+  opacity: 0;                   // overlay ko invisible banata hai initially
+  pointer-events: none;         // overlay clicks ko ignore kare, page usable rahe
+  z-index: 15;                  // overlay ko page content ke upar rakhta hai
+  transition: 0.5s ease;        // opacity change smooth banata hai
+  -webkit-transition: 0.5s ease; // Chrome/Safari support
+  -moz-transition: 0.5s ease;    // Firefox support
+  -ms-transition: 0.5s ease;     // old IE support
+  -o-transition: 0.5s ease;      // old Opera support
+}
+
+.overlay.active {
+  opacity: 1;                   // overlay ko visible banata hai
+  pointer-events: all;          // overlay clicks block kare
+}
+
+
+.modal {
+  position: fixed;              // modal ko viewport ke respect me fix karta hai
+  top: 0;                       // viewport top se start
+  left: 0;                      // viewport left se start
+  width: 100%;                  // full screen width
+  height: 100vh;                // full screen height
+  background: hsla(0, 0%, 0%, 0.5); // background dim effect (fallback)
+  display: flex;                // children ko layout dene ke liye flex enable
+  justify-content: center;      // child (modal-content) ko horizontally center karta hai
+  align-items: center;          // child (modal-content) ko vertically center karta hai
+  opacity: 0;                   // modal invisible initially
+  visibility: hidden;           // modal ko screen reader + layout se hide karta hai
+  pointer-events: none;         // modal inactive rahe
+  z-index: 10;                  // modal overlay se neeche rakha gaya
+  animation: popup 1s ease-in-out 5s forwards; // delay ke baad modal show hone ka animation
+  -webkit-animation: popup 1s ease-in-out 5s forwards; // Chrome/Safari support
+}
+
+@keyframes popup {
+
+  0% {
+    opacity: 0;                 // animation start me invisible
+    visibility: hidden;         // animation start me hidden
+    pointer-events: none;       // animation start me clicks disabled
+  }
+
+  100% {
+    opacity: 1;                 // animation end me visible
+    visibility: visible;        // animation end me visible state
+    pointer-events: all;        // animation end me interaction allow
+  }
+
+}
+
+.modal.closed {
+  display: none;                // modal ko DOM flow se completely hata deta hai
+}
+
+.modal-close-overlay {
+  position: absolute;           // parent (modal) ke respect me position
+  top: 0;                       // parent ke top se start
+  left: 0;                      // parent ke left se start
+  width: 100%;                  // parent ki full width
+  height: 100%;                 // parent ki full height
+  z-index: 1;                   // modal-content ke neeche layer
+}
+
+.newsletter-img {
+  display: none;                // newsletter image ko hide karta hai
+}
