@@ -1,20 +1,43 @@
-const joke = document.querySelector('#joke');
-const jokeBtn = document.querySelector('#get-joke');
+const joke = document.querySelector("#joke");
+const jokeBtn = document.querySelector("#get-joke");
 
+async function generateJoke() {
+  joke.textContent = "Loading...";
 
-async function generateJoke(){
-    const header = {
-        headers: { 'X-Api-Key': 'APUFhJBLuaMPjcJswqx9Tw==5oDPPS7wbSQfev4D'}
+  try {
+    const response = await fetch(
+      "https://api.api-ninjas.com/v1/dadjokes",
+      {
+        headers: {
+          "X-Api-Key": "YOUR_API_KEY_HERE"
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
     }
-    const url = `https://api.api-ninjas.com/v1/dadjokes?limit=1`
-    let dadjoke = await fetch(url, header);
-    dadjoke = await dadjoke.json();
-    console.log(dadjoke,"dad joke");
-    console.log(dadjoke[0])
-    console.log(dadjoke[0].joke)
-    joke.innerHTML = dadjoke[0].joke;
 
+    const data = await response.json();
+
+    // Defensive validation
+    if (!Array.isArray(data) || !data[0] || !data[0].joke) {
+      throw new Error("Unexpected API response structure");
+    }
+
+    joke.textContent = data[0].joke;
+
+  } catch (error) {
+    console.error("Joke fetch failed:", error.message);
+    joke.textContent = "Unable to fetch joke. Try again.";
+  }
 }
 
-
-jokeBtn.addEventListener('click', generateJoke);
+// Prevent rapid multiple clicks
+let isFetching = false;
+jokeBtn.addEventListener("click", async () => {
+  if (isFetching) return;
+  isFetching = true;
+  await generateJoke();
+  isFetching = false;
+});
