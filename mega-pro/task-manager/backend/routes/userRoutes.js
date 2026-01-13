@@ -9,3 +9,4 @@ router.get("/:id",protect, getUserById);// Get user by ID
 router.delete("/:id", protect, adminOnly, deleteUser); // Delete user (admin only)
 
 module.exports = router;
+
