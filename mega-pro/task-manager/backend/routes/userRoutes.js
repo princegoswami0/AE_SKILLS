@@ -1,5 +1,6 @@
 const express = require('express');
 const { adminOnly, protect } = require('../middlewares/authMiddleware');
+const { getUsers, getUserById, deleteUser } = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -9,4 +10,3 @@ router.get("/:id",protect, getUserById);// Get user by ID
 router.delete("/:id", protect, adminOnly, deleteUser); // Delete user (admin only)
 
 module.exports = router;
-
