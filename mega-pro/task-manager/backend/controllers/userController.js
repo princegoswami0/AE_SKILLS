@@ -6,29 +6,28 @@ const bcrypt = require('bcryptjs');
 // @route   GET /api/users
 // @access  Private/Admin
 const getUsers = async (req, res) => {
-    try {
-      const users = await User.find({role:'member'}).select('-password'); 
+  try {
+    const users = await User.find({ role: 'member' }).select('-password');
 
-      //Add task count for each user
+    //Add task count for each user
 
-     const userWithTaskCounts = await Promise.all(users.map( async (user) => {
+    const userWithTaskCounts = await Promise.all(users.map(async (user) => {
       const pendingTasks = await Task.countDocuments({ assignedTo: user._id, status: 'Pending' });
       const inProgressTasks = await Task.countDocuments({ assignedTo: user._id, status: 'In progress' });
       const completedTasks = await Task.countDocuments({ assignedTo: user._id, status: 'Completed' });
 
       return {
-        ..user._doc,
+        ...user._doc,
         pendingTasks,
         inProgressTasks,
         completedTasks
       };
-     }));
+    }));
 
-     res.json(userWithTaskCounts);
-      }
-    }catch (error) {
-        res.status(500).json({ message: 'Server Error', error: error.message });
-    }
+    res.json(userWithTaskCounts);
+  }catch (error) {
+  res.status(500).json({ message: 'Server Error', error: error.message });
+}
 };
 
 
@@ -37,25 +36,19 @@ const getUsers = async (req, res) => {
 // @access  Private
 
 const getUserById = async (req, res) => {
-    try {
-    } catch (error) {
-        res.status(500).json({ message: 'Server Error', error: error.message });
+  try {
+    const user = await User.findById(req.params.id).select('-password');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
     }
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error', error: error.message });
+  }
 };
 
-
-// @desc    Delete user (admin only)
-// @route   DELETE /api/users/:id
-// @access  Private/Admin
-const deleteUser = async (req, res) => {
-    try {
-    } catch (error) {
-        res.status(500).json({ message: 'Server Error', error: error.message });
-    } 
-};
 
 module.exports = {
-    getUsers,
-    getUserById,
-    deleteUser
+  getUsers,
+  getUserById,
 };
