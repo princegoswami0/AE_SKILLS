@@ -11,6 +11,8 @@ const app = express();
 const PORT = process.env.PORT || 3001 ;
 
 connectDb();
+//middleware
+app.use(express.json());
 
 app.use("/api/notes", notesRoute);
 // app.use("/api/product", productRoutes);
