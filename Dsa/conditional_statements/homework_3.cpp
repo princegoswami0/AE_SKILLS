@@ -47,21 +47,85 @@ int main(){
 // using namespace std;
 
 // int main (){
-	int n;
-	cout <<"enter the number = ,";
-	cin >> n;
+	// int n;
+	// cout <<"enter the number = ,";
+	// cin >> n;
 	
-	char alpha = 'A';
-	for (int i=0; i < n; i++){
-		for (int j = 0 ; j<n ; j++){
-			cout << alpha << " ";
-			alpha++; // 65+1=66 => implicit conversion and store in the char that makes it B. and so on .
-		}
-		cout<<endl;
-	}
+	// char alpha = 'A';
+	// for (int i=0; i < n; i++){
+	// 	for (int j = 0 ; j<n ; j++){
+	// 		cout << alpha << " ";
+	// 		alpha++; // 65+1=66 => implicit conversion and store in the char that makes it B. and so on .
+	// 	}
+	// 	cout<<endl;
+	// }
 
-	cout<< "after pattern: "<<alpha;
+	// cout<< "after pattern: "<<alpha;
 // 	return 0;
 // }
+
+
+
+////////////////////////////
+
+// int n=4;
+
+// for (int i=0;i<n;i++){
+// 	for(int j=0;j<=i;j++){
+// 		cout<< i+1 ;
+// 	}
+// 	cout<<endl;
+// }
+
+
+///
+
+// *
+// **
+// ***
+// ****
+
+// int n=4;
+
+// for (int i = 0; i<n ; i++){
+// 	for(int j =0 ; j <=i;j++){
+// 		cout<< "*";
+// 	}
+// 	cout<<endl;
+// }
+
+//
+
+
+// A
+// B B
+// C C C 
+// D D D D 
+// E E E E E
+
+// int n = 5;
+// // char charct ='A';
+
+// for(int i =0; i<n; i++){
+// 	for (int j=0; j<=i; j++){
+//   cout<< char('A' + i); 
+// 	}
+// 	cout<<endl;
+// 	// charct++;
+// }
+
+
+
+
+
+	int n =5;
+	for (int i = 1; i <=n;i++){
+		for( int j =1; j <= i ; j++){
+			cout << char ( 'A' +i -1);
+		}
+	cout<<endl;
+	}
+ 
   return 0;
 }
+
