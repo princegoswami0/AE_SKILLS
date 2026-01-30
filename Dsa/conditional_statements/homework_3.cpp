@@ -118,14 +118,58 @@ int main(){
 
 
 
-	int n =5;
-	for (int i = 1; i <=n;i++){
-		for( int j =1; j <= i ; j++){
-			cout << char ( 'A' +i -1);
-		}
-	cout<<endl;
-	}
+	// int n =5;
+	// for (int i = 1; i <=n;i++){
+	// 	for( int j =1; j <= i ; j++){
+	// 		cout << char ( 'A' +i -1);
+	// 	}
+	// cout<<endl;
+	// }
+
+
+
+	///////////////////////////
+
+
+
+	// 1
+	// 12
+	// 123
+	// 1234
+
+	// int n = 4 ;
+
+	// for ( int i =0; i <n ;i++){
+	// 	for (int j=0; j <= i ; j++){
+	// 		cout << (j+1);
+	// 	}
+	// 	cout<<endl;
+	// }
  
+
+	// or
+
+	// int n = 5;
+	
+	// for( int i =0; i <n; i++){
+	// 	for ( int j =1; j<=i+1 ; j++){
+	// 			cout<< j << " ";
+	// 	}
+	// 	cout<<endl;
+	// }
+
+
+	////////////////////////////////////
+
+
+	// 1
+	// 2 1
+	// 3 2 1
+	// 4 3 2 1 
+
+	
+
+
   return 0;
 }
 
