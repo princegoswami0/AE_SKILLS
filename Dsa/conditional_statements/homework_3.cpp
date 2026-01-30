@@ -2,18 +2,20 @@
 using namespace std;
 
 int main(){
-  int n;
-  cout<<"Enter the no. =";
+  // 
+  
+  //factorial of a number n ;
+
+  int n ;
+  cout<<"enter the number n ";
   cin>>n;
 
-  int totalSum=0;
+  int fact = 1;
 
-  for(int i=1;i<=n;i++){
-    if(i%3==0){
-      totalSum+=i;
-    }
+  for(int i=1; i<=n; i++){
+    fact*=i;
   }
 
-  cout<<totalSum<<"this is your answer";
+  cout<<fact;
   return 0;
 }
